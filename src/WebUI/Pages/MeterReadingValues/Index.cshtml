@@ -1,0 +1,34 @@
+﻿@page
+@model WaterMeterManager.WebUI.Pages.MeterReadingValues.ListModel
+@{
+    ViewData["Title"] = "MeterReadingValues";
+}
+
+<h1>Meter Readings List</h1>
+
+<table class="table table-striped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                Reading Date
+            </th>
+            <th>
+                Read Value
+            </th>            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.MeterReadingValues)
+        {
+
+            <tr class="table-row">
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReadingDate.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReadValue)
+                </td>                
+            </tr>
+        }
+    </tbody>
+</table>

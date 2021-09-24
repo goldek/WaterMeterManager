@@ -1,0 +1,45 @@
+﻿@page
+@model WaterMeterManager.WebUI.Pages.Apartments.Meters.ListModel
+@{
+    ViewData["Title"] = "Meters";
+}
+
+<h1>Meters List</h1>
+
+<table class="table table-striped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                Serial Number
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Last Reading Value
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Meters)
+        {
+
+        <tr class="table-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.SerialNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastReadingValue)
+            </td>
+            <td>
+                <a asp-page="./Meters/Details" asp-route-id="@item.MeterId">Details</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

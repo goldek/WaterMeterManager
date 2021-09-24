@@ -1,0 +1,52 @@
+﻿@page
+@model WaterMeterManager.WebUI.Pages.Buildings.IndexModel
+
+@{
+    ViewData["Title"] = "Buildings";
+}
+
+<h1>Buildings List</h1>
+
+<table class="table table-striped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                City
+            </th>
+            <th>
+                Street
+            </th>
+            <th>
+                Number
+            </th>
+            <th>
+                Apartments Count
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Buildings)
+        {
+
+            int apartmentsCount = item.Apartments.Count();
+
+            <tr class="table-row">
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Street)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => apartmentsCount)
+                </td>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@item.BuildingId">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
