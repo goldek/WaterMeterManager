@@ -14,21 +14,27 @@
             </th>
             <th>
                 Read Value
-            </th>            
+            </th>
+            <th>
+                Meter Id
+            </th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.MeterReadingValues)
         {
 
-            <tr class="table-row">
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReadingDate.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReadValue)
-                </td>                
-            </tr>
+        <tr class="table-row">
+            <td>
+                @Html.DisplayFor(modelItem => item.ReadingDate.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReadValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MeterId)
+            </td>
+        </tr>
         }
     </tbody>
 </table>

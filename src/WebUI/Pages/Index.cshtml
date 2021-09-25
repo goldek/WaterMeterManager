@@ -5,4 +5,25 @@
     ViewData["Title"] = "Home";
 }
 
-<h1>This willl be index page</h1>
+@foreach (var building in Model.Buildings)
+{
+    <h3>Building @building.City, ul.@building.Street @building.Number </h3>
+    var buildingId = building.BuildingId;
+
+   <div class="card-group">
+        @foreach (var apartment in Model.Apartments.Where(x => x.BuildingId == buildingId).Take(5))
+        {
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Apartment no. @apartment.Number</h5>
+                <p class="card-text"> 
+                @foreach (var meter in Model.Meters.Where(m => m.ApartmentId == apartment.ApartmentId))
+                {
+                <p>@meter.Type: @meter.LastReadingValue</p>
+                }</p>
+            </div>
+        </div>
+        }
+    </div>
+}
+
